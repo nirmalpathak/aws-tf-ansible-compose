@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+
+   wordpress_site_1:
+     image: nirmalpathak/sample-flask-prometheus-app
+     restart: always
+     ports:
+       - 5000
+     environment:
+       VERSION: v0.1
+
+   wordpress_site_2:
+     image: nirmalpathak/sample-flask-prometheus-app
+     restart: always
+     ports:
+       - 5000
+     environment:
+       VERSION: v0.2
+
+   haproxy_ingress:
+     depends_on:
+      - wordpress_site_1
+      - wordpress_site_2
+     image: haproxy
+     volumes:
+      - ../config/haproxy_config:/usr/local/etc/haproxy:ro
+     restart: always
+     ports:
+      - 6060:80
