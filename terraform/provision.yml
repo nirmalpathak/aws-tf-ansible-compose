@@ -1,0 +1,60 @@
+- name: Configure SonicJob instance.
+  hosts: hosts
+  #hosts: localhost
+  gather_facts: false
+  become: true
+  tasks:
+
+      - name: Install aptitude using apt
+        apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+
+      - name: Add Docker GPG key
+        apt_key:
+          url: https://download.docker.com/linux/ubuntu/gpg
+          state: present
+
+      - name: Install required system packages
+        apt: name={{ item }} state=latest update_cache=yes
+        loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools', 'python-pip']
+
+      - name: Add Docker APT repository
+        apt_repository:
+          repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+          state: present
+
+      - name: Update apt and install docker-ce
+        apt: update_cache=yes name=docker-ce state=latest
+
+      - name: Update apt and install docker-ce-cli
+        apt: update_cache=yes name=docker-ce-cli state=latest
+
+      - name: Update apt and install containerd.io
+        apt: update_cache=yes name=containerd.io state=latest
+
+
+      - name: Install Docker and Compose Module for Python
+        pip:
+          name:
+            - docker
+            - docker-compose
+        tags:
+          - pip
+
+      - name: Install Docker-compose
+        shell: curl -L "https://github.com/docker/compose/releases/download/1.24.1/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose && ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+        ignore_errors: yes
+
+      - name: Clone a private repository into /opt.
+        ignore_errors: yes
+        tags:
+          - gitrepo
+        git:
+          repo: https://github.com/nirmalpathak/aws-tf-ansible-compose.git
+          version: master
+          dest: /opt/repo
+
+      - name: Deploy containers using docker-compose
+        docker_compose:
+          project_src: /opt/repo/compose
+        tags:
+          - compose
