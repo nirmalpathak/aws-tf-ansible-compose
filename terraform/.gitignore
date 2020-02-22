@@ -5,11 +5,9 @@
 # Module directory
 .terraform/
 
-# Sensitive Files
-/variables.tf
-
-# Ansible failure file
+# Ansible files
 *.retry
+hosts.ini
 
 #Secret Key Files
 *.pem
