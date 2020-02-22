@@ -27,4 +27,4 @@ services:
       - ../config/haproxy_config:/usr/local/etc/haproxy:ro
      restart: always
      ports:
-      - 6060:80
+      - 80:80
