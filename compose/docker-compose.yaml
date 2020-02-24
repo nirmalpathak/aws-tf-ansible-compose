@@ -20,8 +20,8 @@ services:
 
    haproxy_ingress:
      depends_on:
-      - wordpress_site_1
-      - wordpress_site_2
+      - flask_site_1
+      - flask_site_2
      image: haproxy
      volumes:
       - ../config/haproxy_config:/usr/local/etc/haproxy:ro
