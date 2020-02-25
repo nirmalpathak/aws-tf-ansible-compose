@@ -1,5 +1,5 @@
 # AWS-Terraform-Ansible-Docker-Compose
-This repository contains an example of spinning up a few AWS resources using [Terraform](https://www.terraform.io/ "Terraform") and uses [Ansible](https://www.ansible.com/ "Ansible") to install [Docker](https://www.docker.com/ "Docker") & [Docker Compose](https://docs.docker.com/compose/ "docker-compose") packages along with deployment of sample Python Flask web application.
+This repository contains an example of spinning up a few AWS resources using [Terraform](https://www.terraform.io/ "Terraform") and uses [Ansible](https://www.ansible.com/ "Ansible") to install [Docker](https://www.docker.com/ "Docker") & [Docker Compose](https://docs.docker.com/compose/ "docker-compose") packages along with deployment of [sample](https://github.com/nirmalpathak/sample-flask-prometheus-app "sample") Python Flask web application.
 
 ### Workflow
 
