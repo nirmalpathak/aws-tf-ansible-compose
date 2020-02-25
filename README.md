@@ -28,6 +28,9 @@ This repository contains an example of spinning up a few AWS resources using [Te
 - If Terraform provisioning went well then you should be able to `curl` or use browser to hit the IP of newly created AWS EC2 instance.
 - For Example,
 >$ curl 1.2.3.4
-Hello World! Running on Host: dee06c8d0cce Version: v0.1
+
+>Hello World! Running on Host: dee06c8d0cce Version: v0.1
+
 >$ curl 1.2.3.4
-Hello World! Running on Host: 3a7ac54acaaa Version: v0.2
+
+>Hello World! Running on Host: 3a7ac54acaaa Version: v0.2
