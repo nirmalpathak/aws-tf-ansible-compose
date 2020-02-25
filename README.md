@@ -23,7 +23,7 @@ This repository contains an example of spinning up a few AWS resources using [Te
 	 `terraform plan`
 	 `terraform apply`
 
-###Verify
+### Verify
 
 - If Terraform provisioning went well then you should be able to `curl` or use browser to hit the IP of newly created AWS EC2 instance.
 - For Example,
