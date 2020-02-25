@@ -13,9 +13,9 @@ variable "aws_region" {
 }
 
 variable "key_pair" {
-  default = "nirmal-tf"
+  default = "your_key_name"
 }
 
 variable "ssh_key_private" {
-  default = "nirmal-tf.pem"
+  default = "path_to_your_key.pem"
 }
