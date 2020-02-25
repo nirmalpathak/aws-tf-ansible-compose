@@ -16,35 +16,39 @@ This repository contains an example of spinning up a few AWS resources using [Te
 - AWS account with permission to create EC2 instance & Security Group along with AWS Access Keys (Access Key ID and Secret Access Key).
 
 - Export your AWS keys as environment variables.
-	> $ export AWS_ACCESS_KEY_ID="ABCDEFGH"
-	
-	> $ export AWS_SECRET_ACCESS_KEY="ajdhjshdu!jhajsd"
-
+```
+	$ export AWS_ACCESS_KEY_ID="ABCDEFGH"
+	$ export AWS_SECRET_ACCESS_KEY="ajdhjshdu!jhajsd"
+```
 ### Usage
 
 - Clone this git repo and go to directory named `terraform`.
 - Replace values of SSH key variables with your key name in file `varaibles.tf`.
->variable "key_pair" {
+```
+variable "key_pair" {
   default = "your_key_name"
 }
 
->variable "ssh_key_private" {
+variable "ssh_key_private" {
   default = "path_to_your_key.pem"
 }
+```
 
 - Run following Terraform commands for provisioning,
-	 - `$ terraform init`
-	 - `$ terraform plan`
-	 - `$ terraform apply`
 
+```
+	  $ terraform init
+	  $ terraform plan
+	  $ terraform apply
+```
 ### Verify
 
 - If Terraform provisioning went well then you should be able to `curl` or use browser to hit the IP of newly created AWS EC2 instance.
 - For Example,
->$ curl 1.2.3.4
+```
+$ curl 1.2.3.4
+Hello World! Running on Host: dee06c8d0cce Version: v0.1
 
->Hello World! Running on Host: dee06c8d0cce Version: v0.1
-
->$ curl 1.2.3.4
-
->Hello World! Running on Host: 3a7ac54acaaa Version: v0.2
+$ curl 1.2.3.4
+Hello World! Running on Host: 3a7ac54acaaa Version: v0.2
+```
