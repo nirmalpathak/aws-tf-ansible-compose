@@ -4,18 +4,6 @@ resource "aws_instance" "my-web-instance" {
   key_name = "${var.key_pair}"
   vpc_security_group_ids = ["${aws_security_group.web.id}"]
 
-#  user_data = << EOF
-#	#! /bin/bash
-#        sudo apt update
-#	sudo apt install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
-#	curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-#	sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-#	sudo apt update
-#	sudo apt install docker-ce
-#	sudo usermod -aG docker $USER
-#	sudo systemctl enable docker
-#	sudo systemctl start docker
-#  EOF
   tags =  {
     Name = "web-instance"
   }
@@ -55,27 +43,6 @@ resource "aws_security_group" "web" {
   ingress {
     from_port   = 22
     to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 6060
-    to_port     = 6060
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 9191
-    to_port     = 9191
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
-    from_port   = 9292
-    to_port     = 9292
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
