@@ -17,8 +17,8 @@ module "owasp_top_10" {
   csrf_expected_size             = "36"
 }
 
-resource "aws_wafregional_web_acl_association" "alb_sonicjob_waf" {
-  resource_arn = "${aws_alb.alb_sonicjob.arn}"
+resource "aws_wafregional_web_acl_association" "web_alb_waf" {
+  resource_arn = "${aws_alb.web_alb.arn}"
   web_acl_id   = "${module.owasp_top_10.rule_group_id}"
 }
 */

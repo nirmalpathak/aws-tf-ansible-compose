@@ -1,5 +1,5 @@
 /*
-resource "aws_alb" "alb_sonicjob" {
+resource "aws_alb" "web_alb" {
 	name		=	"front-alb"
 	internal	=	false
 	security_groups	=	["${aws_security_group.web.id}"]
@@ -7,7 +7,7 @@ resource "aws_alb" "alb_sonicjob" {
 	enable_deletion_protection	=	true
 }
 
-resource "aws_alb_target_group" "alb_sonicjob_http" {
+resource "aws_alb_target_group" "web_alb_http" {
 	name	= "alb-sonicjob-http"
 	#vpc_id	= "${var.vpc_id}"
 	port	= "80"
@@ -25,7 +25,7 @@ resource "aws_alb_target_group" "alb_sonicjob_http" {
 }
 
 resource "aws_alb_target_group_attachment" "alb_backend_http" {
-  target_group_arn = "${aws_alb_target_group.alb_sonicjob_http.arn}"
+  target_group_arn = "${aws_alb_target_group.web_alb_http.arn}"
   target_id        = "${aws_instance.my-web-instance.id}"
   port             = 80
 }
