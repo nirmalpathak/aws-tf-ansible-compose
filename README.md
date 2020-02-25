@@ -10,7 +10,7 @@ This repository contains an example of spinning up a few AWS resources using [Te
 ### Pre-requisite
 - Packages required to run this code successfully.
 	- Git
-	- Ansbile
+	- Ansbile > v2.8.4
 	- Terraform
 
 - AWS account with permission to create EC2 instance & Security Group along with AWS Access Keys (Access Key ID and Secret Access Key).
