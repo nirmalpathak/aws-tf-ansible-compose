@@ -3,7 +3,7 @@ This repository contains an example of spinning up a few AWS resources using [Te
 
 ### Workflow
 
-- Terraform will create an EC2 instance and Security Group & will invoke the Ansible playbook.
+- The Terraform will create an EC2 instance and Security Group. The Terraform script will invoke the Ansible playbook.
 - The Ansible playbook will install Docker & docker-compose along with some pre-requisite packages. The Ansible playbook will also deploy containers of sample Python Flask web application and HAProxy.
 - The 'docker-compose.yaml' file contains the docker container orchestration code.
 
